@@ -16,15 +16,13 @@ function saySomething() {
     console.log(this)
   }
   
-  // or
-  
-  setTimeout( function() {console.log(this)}, 1000)
+
   
   // Principle 2
   
   // code example for Implicit Binding
   const MyObject = function () {
-    this.name = 'MyObjectName';
+    this.name = 'My Lilly';
     this.attribute = 'attribute';
   };
   
@@ -40,20 +38,24 @@ function saySomething() {
   
   // code example for New Binding
   
-  function RunningPerson(runner) {
-    this.pace = 'is running a 6 min/mile.';
-    this.runner = runner;
-    this.speak = function() {
-        console.log(this.runner + this.pace);
-        console.log(this);
-    }
+  
+  function User (name, age) {
+  
+    this.name = name
+    this.age = age
   }
   
-  const john = new RunningPerson('John');
-  john.speak();
+  const me = new User('Alexis', 30)
   
   // Principle 4
   
   // code example for Explicit Binding
-  const coder = {name: 'John', myFavoriteActivity: 'coding'};
-  MyObject.prototype.doSomething.call(coder, coder.myFavoriteActivity);
+  function greeting () {
+    alert(`Hello, my name is ${this.name}` )
+  }
+  
+  const user = {
+    name: 'Alexis',
+    age:30,
+  }
+greeting.call(user)
